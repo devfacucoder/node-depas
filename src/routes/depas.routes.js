@@ -10,7 +10,6 @@ depaRoutes.put("/:ide", [verifyToken], depaCtrl.updateDepaById); // Actualizar u
 depaRoutes.post("/depausers",depaCtrl.getDepasUsers) //funciona
 depaRoutes.delete("/:depaId", [verifyToken], depaCtrl.deleteDepa); // Eliminar un departamento //funciona
 
-depaRoutes.get("/buscar/",depaCtrl.buscarDepa)
 // Rutas de acceso público
 depaRoutes.get("/", depaCtrl.getAllDepas); // Obtener todos los departamentos
 depaRoutes.get("/:ide", depaCtrl.getOneDepabyId); // Obtener un departamento por su ID

@@ -63,6 +63,12 @@ export const createDepa = async (req, res) => {
 
 export const getAllDepas = async (req, res) => {
   try {
+    const { location } = req.query;
+    if(location){
+      const depasDB = await depaModel.find({ location: location });
+      return res.json({ depas: depasDB });
+
+    }
     const depasDB = await depaModel.find();
     res.json({ depas: depasDB });
   } catch (error) {
