@@ -14,7 +14,7 @@ createRoles();
 const clientIP = process.env.CLIENT_IP;
 createAdmin();
 const allowedOrigins = [process.env.CLIENT_IP,"https://devfacucoder.github.io"];
-
+//https://node-depas.onrender.com
 const corsOptions = {
   origin: function (origin, callback) {
     console.log('Solicitud de origen:', origin);
@@ -32,7 +32,7 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true, // Permitir cookies o credenciales
 };
-
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/api/users/", userRoutes);
 app.use("/api/panel/", panelRoutes);
