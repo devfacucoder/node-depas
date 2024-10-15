@@ -16,6 +16,7 @@ panelRoutes.delete("/user/:id", [verifyToken,itsAdmin], panelCtrl.deleteUserByAd
 //ruta para cambiar roles
 panelRoutes.put("/role", [verifyToken,itsAdmin], panelCtrl.updateUser); //* funciona
 panelRoutes.get("/permiso",[verifyToken,itsAdmin],panelCtrl.permitido)
+panelRoutes.get("/users",[verifyToken,itsAdmin],panelCtrl.getUsersForPanel)
 
 export default panelRoutes;
 /*TODO para mañana quizas despues de venir de la facultad terminar con esto y 

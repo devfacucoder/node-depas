@@ -101,3 +101,27 @@ export const updateUser = async (req, res) => {
     res.status(500).json({ message: "Error al actualizar el rol", error });
   }
 };
+
+export const getUsersForPanel = async (req, res) => {
+  try {
+    // Utilizamos populate para obtener el campo 'name' del rol asociado a cada usuario
+    const users = await userModel.find().populate('rol', 'name');
+
+    // En la respuesta, cada usuario ya incluirá el campo 'nameRole' con el nombre del rol
+    const usersWithRoles = users.map(user => {
+      return {
+        ...user._doc, // Traemos todos los campos del usuario
+        nameRole: user.rol ? user.rol.name : 'Rol no encontrado', // Si tiene un rol, asignamos el nombre, si no, un mensaje de error
+      };
+    });
+
+    res.status(200).json(usersWithRoles);
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Error al obtener los usuarios' });
+  }
+};
+
+
+

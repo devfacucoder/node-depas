@@ -13,13 +13,13 @@ import imageRoutes from "./routes/image.routes.js";
 createRoles();
 const clientIP = process.env.CLIENT_IP;
 createAdmin();
-const allowedOrigins = [process.env.CLIENT_IP,"https://devfacucoder.github.io"];
+const allowedOrigins = [process.env.CLIENT_IP,"http://localhost:5173/react-depas"];
 //https://node-depas.onrender.com
 const corsOptions = {
   origin: function (origin, callback) {
+    console.log("recibido:"+clientIP)
     console.log('Solicitud de origen:', origin);
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      console.log("el origen es: " + origin)
       // Permitir si el origen está en la lista de permitidos o si es una solicitud sin origen (como Postman)
       callback(null, true);
       
